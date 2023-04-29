@@ -3,4 +3,5 @@ docker build -t nvim .
 docker run -itd -v/mnt:/mnt -v/home:/home --name nvim nvim
 docker exec -it nvim groupadd --gid $(id -g) $(whoami)
 docker exec -it nvim useradd --uid $(id -u) --gid $(id -g) --home-dir /nvim/$(id -u)-$(id -g) -k /nvim/skel -m $(whoami)
+alias nvim-dev='docker exec -it -u$(id -u):$(id -g) -w$PWD nvim'
 alias nvim='docker exec -it -u$(id -u):$(id -g) -w$PWD nvim nvim'
