@@ -1,6 +1,5 @@
 set mouse=
 set guicursor=
 
-set noautoindent
-set indentexpr=
+filetype plugin off
 filetype indent off
