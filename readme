@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 docker build -t nvim --build-arg username=$(whoami) --build-arg user_uid=$(id -u) --build-arg user_gid=$(id -g) .
 docker run -itd -v/mnt:/mnt -v/home:/home --name nvim nvim
+docker exec -it -w"$PWD" nvim bash -ic 'nvim ~/.config/nvim/init.lua'
 alias nvim-dev='docker exec -it -w"$PWD" nvim'
 alias nvim='docker exec -it -w"$PWD" nvim nvim'
