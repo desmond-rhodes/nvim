@@ -7,4 +7,4 @@ run cd /tmp \
 run mkdir /nvim \
 	&& cp -r /etc/skel /nvim
 run mkdir -p /nvim/skel/.config/nvim
-copy init.vim /nvim/skel/.config/nvim
+copy init.lua /nvim/skel/.config/nvim
