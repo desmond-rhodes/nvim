@@ -45,6 +45,12 @@ require('lazy').setup({
 			{'hrsh7th/cmp-nvim-lsp'}, -- Required
 			{'L3MON4D3/LuaSnip'},     -- Required
 		}
+	},
+	{
+		'nvim-treesitter/nvim-treesitter',
+		build = function()
+			require('nvim-treesitter.install').update({ with_sync = true })
+		end
 	}
 })
 
@@ -65,3 +71,12 @@ lsp.ensure_installed({
 })
 
 lsp.setup()
+
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = {
+		'bash', 'c', 'cmake', 'cpp', 'css', 'dockerfile', 'git_config', 'gitignore', 'glsl', 'html', 'java', 'javascript', 'jsdoc', 'json', 'latex', 'lua', 'luadoc', 'make', 'markdown', 'matlab', 'passwd', 'python', 'query', 'regex', 'sql', 'vim', 'vimdoc'
+	},
+	highlight = {
+		enable = true
+	}
+}
