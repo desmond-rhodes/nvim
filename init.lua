@@ -71,7 +71,8 @@ require('lazy').setup({
 				build = 'make'
 			}
 		}
-	}
+	},
+	{'RRethy/vim-illuminate'}
 })
 
 -- Set colorscheme
