@@ -129,14 +129,14 @@ require('nvim-tree').setup({
 })
 vim.keymap.set('n', '<leader>t', vim.cmd.NvimTreeToggle)
 
-require("telescope").setup {
+require('telescope').setup {
 	pickers = {
 		find_files = {
 			hidden = true
 		},
 		live_grep = {
 			additional_args = function(opts)
-				return {"--hidden"}
+				return {'--hidden'}
 			end
 		},
 	},
