@@ -6,6 +6,8 @@ vim.cmd.filetype('indent off')
 
 vim.opt.autoindent = false
 
+vim.g.mapleader = ' '
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Auto-install lazy.nvim if not present
@@ -51,7 +53,8 @@ require('lazy').setup({
 		build = function()
 			require('nvim-treesitter.install').update({ with_sync = true })
 		end
-	}
+	},
+	{'mbbill/undotree'}
 })
 
 -- Set colorscheme
@@ -80,3 +83,7 @@ require'nvim-treesitter.configs'.setup {
 		enable = true
 	}
 }
+
+vim.opt.undodir = os.getenv('HOME') .. '/.cache/undotree'
+vim.opt.undofile = true
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
