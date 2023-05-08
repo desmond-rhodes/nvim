@@ -54,7 +54,14 @@ require('lazy').setup({
 			require('nvim-treesitter.install').update({ with_sync = true })
 		end
 	},
-	{'mbbill/undotree'}
+	{'mbbill/undotree'},
+	{
+		'nvim-tree/nvim-tree.lua',
+		version = '*',
+		config = function()
+			require('nvim-tree').setup {}
+		end
+	}
 })
 
 -- Set colorscheme
@@ -87,3 +94,27 @@ require'nvim-treesitter.configs'.setup {
 vim.opt.undodir = os.getenv('HOME') .. '/.cache/undotree'
 vim.opt.undofile = true
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- OR setup with some options
+require('nvim-tree').setup({
+	sort_by = 'case_sensitive',
+	renderer = {
+		icons = {
+			show = {
+				file = false,
+				folder = false
+			},
+			glyphs = {
+				folder = {
+					arrow_closed = '⏵',
+					arrow_open = '⏷'
+				}
+			}
+		}
+	}
+})
+vim.keymap.set('n', '<leader>t', vim.cmd.NvimTreeToggle)
