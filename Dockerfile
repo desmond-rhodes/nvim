@@ -1,5 +1,6 @@
 from ubuntu-base
 run apt-get -y install build-essential
+run apt-get -y --no-install-recommends install npm
 run apt-get -y install unzip
 run apt-get -y install fd-find ripgrep
 run cd /tmp \
