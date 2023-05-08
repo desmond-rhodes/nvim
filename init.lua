@@ -61,6 +61,16 @@ require('lazy').setup({
 		config = function()
 			require('nvim-tree').setup {}
 		end
+	},
+	{
+		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		dependencies = {
+			{'nvim-lua/plenary.nvim'},
+			{
+				'nvim-telescope/telescope-fzf-native.nvim',
+				build = 'make'
+			}
+		}
 	}
 })
 
@@ -118,3 +128,22 @@ require('nvim-tree').setup({
 	}
 })
 vim.keymap.set('n', '<leader>t', vim.cmd.NvimTreeToggle)
+
+require("telescope").setup {
+	pickers = {
+		find_files = {
+			hidden = true
+		},
+		live_grep = {
+			additional_args = function(opts)
+				return {"--hidden"}
+			end
+		},
+	},
+}
+require('telescope').load_extension('fzf')
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
+vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})

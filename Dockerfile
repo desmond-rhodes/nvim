@@ -1,6 +1,7 @@
 from ubuntu-base
 run apt-get -y install build-essential
 run apt-get -y install unzip
+run apt-get -y install fd-find ripgrep
 run cd /tmp \
 	&& curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
 	&& chmod u+x nvim.appimage \
